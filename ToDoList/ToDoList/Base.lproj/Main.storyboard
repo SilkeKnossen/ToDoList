@@ -6,26 +6,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-30" y="-330"/>
-        </scene>
-        <!--Root View Controller-->
+        <!--ToDo's-->
         <scene sceneID="FDg-e7-TOf">
             <objects>
                 <tableViewController id="m8E-sb-76t" customClass="ToDoTableViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +65,7 @@
                             <outlet property="delegate" destination="m8E-sb-76t" id="3PN-cB-c99"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="qIY-NV-iRT">
+                    <navigationItem key="navigationItem" title="ToDo's" id="qIY-NV-iRT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TFX-fX-s9G">
                             <connections>
                                 <segue destination="pb9-3o-mil" kind="presentation" id="Tv9-qx-qdP"/>
@@ -155,19 +139,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCF-mV-DFh">
-                                                    <rect key="frame" x="32" y="22" width="72" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="72" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xs-Yy-wr0">
-                                                    <rect key="frame" x="301" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="317" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CsO-n5-Llf">
-                                                    <rect key="frame" x="0.0" y="43" width="375" height="165"/>
+                                                    <rect key="frame" x="0.0" y="32" width="375" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="165" id="LDZ-EZ-PgP"/>
                                                     </constraints>
@@ -182,11 +166,11 @@
                                             <constraints>
                                                 <constraint firstItem="CsO-n5-Llf" firstAttribute="top" secondItem="9xs-Yy-wr0" secondAttribute="bottom" id="9e4-YV-PuV"/>
                                                 <constraint firstAttribute="trailing" secondItem="CsO-n5-Llf" secondAttribute="trailing" id="K0J-Eg-pbh"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9xs-Yy-wr0" secondAttribute="trailing" constant="16" id="LZX-bX-cem"/>
+                                                <constraint firstAttribute="trailing" secondItem="9xs-Yy-wr0" secondAttribute="trailing" constant="16" id="LZX-bX-cem"/>
                                                 <constraint firstItem="CsO-n5-Llf" firstAttribute="leading" secondItem="ZMq-Bg-YH6" secondAttribute="leading" id="Mt7-LV-HNp"/>
-                                                <constraint firstItem="9xs-Yy-wr0" firstAttribute="top" secondItem="ZMq-Bg-YH6" secondAttribute="topMargin" constant="11" id="S9b-rl-m73"/>
-                                                <constraint firstItem="vCF-mV-DFh" firstAttribute="top" secondItem="ZMq-Bg-YH6" secondAttribute="topMargin" constant="11" id="Xl0-Kw-9lC"/>
-                                                <constraint firstItem="vCF-mV-DFh" firstAttribute="leading" secondItem="ZMq-Bg-YH6" secondAttribute="leadingMargin" constant="16" id="b5c-le-BtR"/>
+                                                <constraint firstItem="9xs-Yy-wr0" firstAttribute="top" secondItem="ZMq-Bg-YH6" secondAttribute="top" constant="11" id="S9b-rl-m73"/>
+                                                <constraint firstItem="vCF-mV-DFh" firstAttribute="top" secondItem="ZMq-Bg-YH6" secondAttribute="top" constant="11" id="Xl0-Kw-9lC"/>
+                                                <constraint firstItem="vCF-mV-DFh" firstAttribute="leading" secondItem="ZMq-Bg-YH6" secondAttribute="leading" constant="16" id="b5c-le-BtR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

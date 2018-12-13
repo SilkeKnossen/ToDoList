@@ -10,8 +10,11 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
     
+    // Initialize a ToDo-list.
     var todos = [ToDo]()
     
+    // Load the TODO's from the saved TODO's file. If there aren't saved TODO's,
+    // load the samples.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +23,10 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
         } else {
             todos = ToDo.loadSampleToDos()
         }
-        
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
+    // Save the checkmark change when the checkmarkbutton is tapped.
     func checkmarkTapped(sender: ToDoCell) {
         if let indexPath = tableView.indexPath(for: sender) {
             var todo = todos[indexPath.row]
@@ -34,10 +37,12 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
         }
     }
     
+    // Compute number of row's for the tableview, that is the number of TODO's.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
     }
     
+    // Create each cell with one TODO from the list of TODO's until there are no more TODO's.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier") as? ToDoCell else {
             fatalError("Could not dequeue a cell")
@@ -50,10 +55,12 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
         return cell
     }
     
+    // Make the cells editable.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    // Make the cells removable when editing.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             todos.remove(at: indexPath.row)
@@ -62,6 +69,8 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
         }
     }
     
+    // When unwinding to this viewcontroller class, reload the TODO where the
+    // unwind came from. If it was a new TODO, then insert a cell with this TODO.
     @IBAction func unwindToToDoList(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveUnwind" else { return }
         let sourceViewController = segue.source as! ToDoViewController
@@ -80,6 +89,7 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
         ToDo.saveToDos(todos)
     }
     
+    // When a TODO is tapped, give that ToDo-struct to the ToDoViewController class.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
             let todoViewController = segue.destination as! ToDoViewController
