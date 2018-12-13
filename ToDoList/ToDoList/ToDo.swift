@@ -8,24 +8,28 @@
 
 import UIKit
 
+// The struct for a ToDo item.
 struct ToDo: Codable {
     var title: String
     var isComplete: Bool
     var dueDate: Date
     var notes: String?
     
+    // Load all saved ToDo's.
     static func loadToDos() -> [ToDo]?  {
         guard let codedToDos = try? Data(contentsOf: ArchiveURL) else {return nil}
         let propertyListDecoder = PropertyListDecoder()
         return try? propertyListDecoder.decode(Array<ToDo>.self, from: codedToDos)
     }
     
+    // Save the list of ToDo's.
     static func saveToDos(_ todos: [ToDo]) {
         let propertyListEncoder = PropertyListEncoder()
         let codedToDos = try? propertyListEncoder.encode(todos)
         try? codedToDos?.write(to: ArchiveURL, options: .noFileProtection)
     }
     
+    // Load sample ToDo's
     static func loadSampleToDos() -> [ToDo] {
         let todo1 = ToDo(title: "ToDo One", isComplete: false,
                          dueDate: Date(), notes: "Notes 1")
@@ -37,6 +41,7 @@ struct ToDo: Codable {
         return [todo1, todo2, todo3]
     }
     
+    // Define the format of the Due Date Button label.
     static let dueDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
@@ -44,6 +49,7 @@ struct ToDo: Codable {
         return formatter
     }()
     
+    // Define the directory where the ToDo's are saved.
     static let DocumentsDirectory =
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         static let ArchiveURL = DocumentsDirectory.appendingPathComponent("todos").appendingPathExtension("plist")

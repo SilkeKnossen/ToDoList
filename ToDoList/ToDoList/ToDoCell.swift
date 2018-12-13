@@ -12,6 +12,7 @@ import UIKit
     func checkmarkTapped(sender: ToDoCell)
 }
 
+// Define a class for a ToDo cell, because these cells are custom.
 class ToDoCell: UITableViewCell {
     
     @IBOutlet weak var isCompleteButton: UIButton!
@@ -19,6 +20,7 @@ class ToDoCell: UITableViewCell {
     
     var delegate: ToDoCellDelegate?
     
+    // If the complete button is tapped, change the button.
     @IBAction func isCompleteButtonTapped(_ sender: UIButton) {
         delegate?.checkmarkTapped(sender: self)
     }
