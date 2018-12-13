@@ -7,3 +7,6 @@ This app includes a ToDo-list. You can mark the ToDo's as complete or incomplete
 
 ### Screenshot of the view where you can edit a TODO
 ![alt text](https://github.com/SilkeKnossen/ToDoList/blob/master/Screenshots/todolist2.png)
+
+### Screenshot of the view where you add a new TODO
+![alt text](https://github.com/SilkeKnossen/ToDoList/blob/master/Screenshots/todolist3.png)
